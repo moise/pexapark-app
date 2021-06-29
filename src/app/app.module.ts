@@ -12,6 +12,8 @@ import {EffectsModule} from '@ngrx/effects';
 import {FarmsEffects} from './state/effects/farms.effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
 	declarations: [
@@ -22,11 +24,16 @@ import {environment} from '../environments/environment';
 		HttpClientModule,
 		AppRoutingModule,
 		FeaturesModule,
+		SharedModule,
 		StoreModule.forRoot({
 			app: fromReducer
 		}),
 		EffectsModule.forRoot([FarmsEffects]),
-		StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
+		StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+		BrowserAnimationsModule
+	],
+	exports: [
+		SharedModule
 	],
 	providers: [
 		{

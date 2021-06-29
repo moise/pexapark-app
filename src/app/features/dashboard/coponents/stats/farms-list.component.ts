@@ -1,20 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Farm} from "../../../../models/types";
+import {FormControl} from "@angular/forms";
+import {Observable} from "rxjs";
+import {map, startWith} from "rxjs/operators";
+import {Store} from "@ngrx/store";
 
 @Component({
-  selector: 'app-farms-list',
-  template: `
-    <p>
-      farms-list works!
-    </p>
-  `,
-  styles: [
-  ]
+	selector: 'app-farms-list',
+	template: `
+      <form class="farm-picker-form">
+          <mat-form-field class="form-field" appearance="fill">
+              <mat-label>Select another farm</mat-label>
+              <input
+                      matInput
+                      type="text"
+                      placeholder="Pick one"
+                      [matAutocomplete]="auto"
+                      [formControl]="listFormControl"
+              >
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option (click)="setFarm.emit(farm)" *ngFor="let farm of filteredFarms | async"
+                              [value]="farm.name">
+                      {{farm.name}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </form>
+	`,
+	styles: [
+			`.mat-form-field {
+					font-size: .8rem
+			}
+			`
+	]
 })
 export class FarmsListComponent implements OnInit {
 
-  constructor() { }
+	@Input() farmList: Farm[] | null = [];
 
-  ngOnInit(): void {
-  }
+	@Output() setFarm: EventEmitter<Farm> = new EventEmitter<Farm>();
+
+	listFormControl = new FormControl();
+
+	filteredFarms: Observable<Farm[]> = new Observable<Farm[]>();
+
+	ngOnInit(): void {
+		this.filteredFarms = this.listFormControl.valueChanges.pipe(
+				startWith(''),
+				map(value => this._farmFilter(value))
+		)
+	}
+
+
+	private _farmFilter(farmName: string) {
+		const value = farmName.toLowerCase();
+
+		return this.farmList?.filter(farm => farm.name.toLowerCase().includes(value)) ?? []
+	}
 
 }

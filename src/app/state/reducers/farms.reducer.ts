@@ -1,17 +1,13 @@
-import {
-	Action,
-	ActionReducer,
-	ActionReducerMap,
-	createFeatureSelector, createReducer,
-	createSelector,
-	MetaReducer, on
-} from '@ngrx/store';
-import {environment} from '../../../environments/environment';
+import {Action, createReducer, on} from '@ngrx/store';
 import {Farm} from "../../models/types";
 import * as farmsActions from '../actions/farms.actions';
 
 export interface State {
 	farms: Farm[]
+}
+
+export interface AppState {
+	app: State
 }
 
 export const initialState: State = {
@@ -28,7 +24,6 @@ export const initialState: State = {
 const farmReducer = createReducer(
 		initialState,
 		on(farmsActions.fetchFarmsSuccess, (state, {farms}) => ({...state, farms}))
-		// on(ScoreboardPageActions.homeScore, state => ({ ...state, home: state.home + 1 })),
 );
 
 export function reducer(state: State | undefined, action: Action) {

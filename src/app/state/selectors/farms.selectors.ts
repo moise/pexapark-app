@@ -1,11 +1,12 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {State} from "../reducers/farms.reducer";
+import {createSelector} from "@ngrx/store";
+import {AppState} from "../reducers/farms.reducer";
+import {Farm} from "../../models/types";
 
-export const farmsSelector = (state: State) => state;
+export const farmsSelector = (state: AppState) => state;
 
 
-export const getFarmsList = createSelector(farmsSelector, (state) => state.farms);
+export const getFarmsList = createSelector(farmsSelector, ( state: AppState ) => state.app.farms);
 
-const selector = (selectorFn: <T>(state: State) => T) => createSelector(farmsSelector, selectorFn);
+const selector = (selectorFn: (state: AppState) => Farm[]) => createSelector(farmsSelector, selectorFn);
 
-export const allFarms = selector((state: any) => state.farms);
+export const allFarms = selector((state: AppState) => state.app.farms);
