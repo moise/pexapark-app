@@ -9,7 +9,7 @@ export interface Reading {
     id: string;
     date: string
     factor: number
-    readings: number
+    count: number
     totalEnergy: number
     lostReadings: number
 }

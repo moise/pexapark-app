@@ -32,7 +32,7 @@ getDates(startDate, endDate).map((date, index) => {
 
 	farmReadings.push({
 		factor,
-		readings,
+		count: readings,
 		id: faker.datatype.uuid(),
 		lostReadings: 24 - readings,
 		totalEnergy: producedEnergy,
