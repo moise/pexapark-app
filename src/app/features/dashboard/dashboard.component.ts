@@ -1,9 +1,7 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable, Subject} from "rxjs";
-import {Farm, Reading} from "../../models/types";
+import {Farm, Range, Reading} from "../../models/types";
 import {FarmsFacade} from "./farms-facade.service";
-import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs/operators";
 
 @Component({
 	selector: 'app-dashboard',
@@ -12,14 +10,16 @@ import {tap} from "rxjs/operators";
           <div class="row">
               <div class="col">
                   <mat-card class="card">
-                      <mat-card-title>
-                          <h3 class="card-title-farm-name">{{farm?.name}}</h3>
-                          <app-farms-list
-                                  class="farm-list-wrapper" [farmList]="farmList$ | async"
-                                  (setFarm)="setFarm($event)"></app-farms-list>
-                      </mat-card-title>
                       <mat-card-content>
-                          <pre>{{farmReadings$ | async | json}}</pre>
+													<header>
+                              <h3 class="card-title-farm-name">{{farm?.name}}</h3>
+                              <app-filter
+                                      [farmList]="farmList$ | async"
+                                      (setFarm)="setFarm($event)"
+																			(setDateRange)="setDateRange($event)"
+                              ></app-filter>
+													</header>
+                          <pre>{{(farmReadings$ | async | json)}}</pre>
                       </mat-card-content>
                   </mat-card>
               </div>
@@ -31,7 +31,7 @@ import {tap} from "rxjs/operators";
         width: 90%
     }
 
-    .mat-card-title {
+    header { 
         display: flex;
         margin: 0;
     }
@@ -39,18 +39,14 @@ import {tap} from "rxjs/operators";
     .card-title-farm-name {
         margin: 0;
     }
-
-    .farm-list-wrapper {
-        display: flex;
-        margin-left: auto;
-        margin-bottom: 0;
-    }
 		`
 	]
 })
 export class DashboardComponent implements OnInit {
 
 	farm$: Subject<Farm> = new Subject<Farm>();
+
+	range$: Subject<Range> = new Subject<Range>();
 
 	farm: Farm | undefined;
 
@@ -70,9 +66,15 @@ export class DashboardComponent implements OnInit {
 		this.farm$.subscribe(farm => this.farm = farm);
 		this.farmList$.subscribe(farms => this.farm$.next(farms[0]));
 		this.farm$.subscribe(farm => this.farmsFacade.getReadings(farm.id));
+
+		this.range$.subscribe(range => this.farmsFacade.getReadings(this.farm?.id!, range))
 	}
 
 	setFarm(farm: Farm) {
 		this.farm$.next(farm);
+	}
+
+	setDateRange(range: Range) {
+		this.range$.next(range);
 	}
 }

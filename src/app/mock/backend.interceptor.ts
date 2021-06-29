@@ -39,7 +39,9 @@ export class BackendInterceptor implements HttpInterceptor {
 
 	private handlePostRequests(request: HttpRequest<unknown>, next: HttpHandler) {
 		if (request.url.endsWith("/readings")) {
-			return of(new HttpResponse({status: 200, body: readings}))
+			// @ts-ignore
+			const i = !!request.body?.range;
+			return of(new HttpResponse({status: 200, body: readings(i)}))
 		}
 
 		return next.handle(request);

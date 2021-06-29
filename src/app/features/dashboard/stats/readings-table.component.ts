@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Farm, Reading} from "../../../../models/types";
+import {Farm, Reading} from "../../../models/types";
 
 @Component({
   selector: 'app-readings-table',

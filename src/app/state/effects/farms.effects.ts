@@ -3,9 +3,8 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {FarmService} from "../../services/farm.service";
 import {fetchFarmReadings, fetchFarmReadingSuccess, fetchFarms, fetchFarmsSuccess} from "../actions/farms.actions";
 import {catchError, map, mergeMap, tap} from "rxjs/operators";
-import {EMPTY, of} from "rxjs";
-import {Store} from "@ngrx/store";
-import {Farm, Reading} from "../../models/types";
+import {EMPTY} from "rxjs";
+import {Farm, Range, Reading} from "../../models/types";
 
 @Injectable()
 export class FarmsEffects {
@@ -23,13 +22,14 @@ export class FarmsEffects {
 
 	loadFarmReadings$ = createEffect(() => this.actions$.pipe(
 			ofType(fetchFarmReadings),
-			mergeMap(() =>
-					this.farmService.getReadings()
+			mergeMap(({type, ...rest}) =>
+					this.farmService.getReadings(rest)
 							.pipe(
 									tap(res => console.log(res)),
 									map((readings: Reading[]) => (fetchFarmReadingSuccess({readings}))),
 									catchError(() => EMPTY)
-							))
+							)
+			)
 			), {dispatch: true, resubscribeOnError: false}
 	);
 

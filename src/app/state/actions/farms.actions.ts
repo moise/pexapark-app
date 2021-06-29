@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {Farm, Reading} from "../../models/types";
+import {Farm, Reading, Range} from "../../models/types";
 
 const fetchFarmsAction = '[farms]/fetch'
 const fetchFarmsSuccessAction = '[farms]/fetch/success'
@@ -17,7 +17,8 @@ export const fetchFarmsSuccess = createAction(
 )
 
 export const fetchFarmReadings = createAction(
-		fetchFarmReadingAction
+		fetchFarmReadingAction,
+		props<{farmId: string, range?: Range}>()
 );
 
 export const fetchFarmReadingSuccess = createAction(

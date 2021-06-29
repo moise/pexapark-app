@@ -28,10 +28,6 @@ import {Store} from "@ngrx/store";
       </form>
 	`,
 	styles: [
-			`.mat-form-field {
-					font-size: .8rem
-			}
-			`
 	]
 })
 export class FarmsListComponent implements OnInit {

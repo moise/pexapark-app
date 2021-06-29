@@ -1,3 +1,5 @@
+import {FormControl} from "@angular/forms";
+
 export interface Farm {
     id: string;
     key: string;
@@ -12,4 +14,9 @@ export interface Reading {
     count: number
     totalEnergy: number
     lostReadings: number
+}
+
+export interface Range {
+    start: FormControl;
+    end: FormControl;
 }

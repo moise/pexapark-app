@@ -16,7 +16,7 @@ export class FarmService {
 		return this.httpClient.get<Farm[]>(`${window.location.origin}/api/farms`)
 	}
 
-	getReadings() {
-		return this.httpClient.post<Reading[]>(`${window.location.origin}/api/farms/4/readings`, {})
+	getReadings(data: any) {
+		return this.httpClient.post<Reading[]>(`${window.location.origin}/api/farms/4/readings`, data)
 	}
 }
