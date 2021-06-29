@@ -8,21 +8,23 @@ import {tap} from "rxjs/operators";
 @Component({
 	selector: 'app-dashboard',
 	template: `
-      <mat-grid-list cols="1" rowHeight="600px">
-          <mat-grid-tile rowspan="1" colspan="1">
-              <mat-card class="card">
-                  <mat-card-title>
-                      <h3 class="card-title-farm-name">{{farm?.name}}</h3>
-                      <app-farms-list
-                              class="farm-list-wrapper" [farmList]="farmList$ | async"
-                              (setFarm)="setFarm($event)"></app-farms-list>
-                  </mat-card-title>
-                  <mat-card-content>
-                      <pre>{{farmReadings$ | async | json}}</pre>
-                  </mat-card-content>
-              </mat-card>
-          </mat-grid-tile>
-      </mat-grid-list>
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                  <mat-card class="card">
+                      <mat-card-title>
+                          <h3 class="card-title-farm-name">{{farm?.name}}</h3>
+                          <app-farms-list
+                                  class="farm-list-wrapper" [farmList]="farmList$ | async"
+                                  (setFarm)="setFarm($event)"></app-farms-list>
+                      </mat-card-title>
+                      <mat-card-content>
+                          <pre>{{farmReadings$ | async | json}}</pre>
+                      </mat-card-content>
+                  </mat-card>
+              </div>
+          </div>
+      </div>
 	`,
 	styles: [
 		`.card {

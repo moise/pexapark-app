@@ -8,23 +8,21 @@ import {MatOptionModule} from "@angular/material/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatInputModule} from "@angular/material/input";
-import { ReadingsTableComponent } from './dashboard/coponents/stats/readings-table.component';
+import {ReadingsTableComponent} from './dashboard/coponents/stats/readings-table.component';
 
 
 @NgModule({
 	declarations: [
 		DashboardComponent,
 		FarmsListComponent,
-  ReadingsTableComponent
+		ReadingsTableComponent
 	],
 	exports: [
-		MatGridListModule,
 		MatCardModule
 	],
 	imports: [
 		CommonModule,
 		MatCardModule,
-		MatGridListModule,
 		MatOptionModule,
 		ReactiveFormsModule,
 		MatAutocompleteModule,
