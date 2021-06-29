@@ -15,9 +15,6 @@ export class FarmService {
 	}
 
 	getFarms() {
-		// this.httpClient.get<Farm[]>(`${window.location.origin}/api/farms`).toPromise().then(response => {
-		// 	debugger
-		// });
 		return this.httpClient.get<Farm[]>(`${window.location.origin}/api/farms`)
 	}
 }

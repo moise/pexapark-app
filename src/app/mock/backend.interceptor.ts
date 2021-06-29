@@ -1,12 +1,9 @@
 import {Injectable} from '@angular/core';
-import {
-	HttpRequest,
-	HttpHandler,
-	HttpEvent,
-	HttpInterceptor, HttpResponse
-} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import farms from './farms';
+import readings from './readings';
+import {delay} from "rxjs/operators";
 
 
 @Injectable()
@@ -16,13 +13,36 @@ export class BackendInterceptor implements HttpInterceptor {
 	}
 
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-		if (request.method === 'GET' && request.url === `${window.location.origin}/api/farms`) {
-			return of(new HttpResponse({
-				status: 200,
-				body: farms
-			}))
+		if (request.method === 'GET') {
+			return this.handleGetRequests(request, next).pipe(
+					delay(500)
+			);
+		}
+
+		if (request.method === 'POST') {
+			return this.handlePostRequests(request, next).pipe(
+					delay(500)
+			);
 		}
 
 		return next.handle(request);
+	}
+
+	private handleGetRequests(request: HttpRequest<unknown>, next: HttpHandler) {
+
+		if (request.url.endsWith("/farms")) {
+			return of(new HttpResponse({status: 200, body: farms}))
+		}
+
+		return next.handle(request);
+	}
+
+	private handlePostRequests(request: HttpRequest<unknown>, next: HttpHandler) {
+		if (request.url.endsWith("/readings")) {
+			return of(new HttpResponse({status: 200, body: readings}))
+		}
+
+		return next.handle(request);
+
 	}
 }

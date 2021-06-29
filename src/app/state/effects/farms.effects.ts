@@ -15,7 +15,6 @@ export class FarmsEffects {
 			mergeMap(() =>
 					this.farmService.getFarms()
 							.pipe(
-									tap( res => console.log('HTTP response:', res)),
 									map((farms: Farm[]) => (fetchFarmsSuccess({ farms }))),
 									catchError(() => EMPTY)
 							))

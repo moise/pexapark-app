@@ -2,6 +2,8 @@ import {Component, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs";
 import {Farm} from "../../models/types";
 import {FarmsFacade} from "./farms-facade.service";
+import {HttpClient} from "@angular/common/http";
+import {tap} from "rxjs/operators";
 
 @Component({
 	selector: 'app-dashboard',
@@ -47,7 +49,8 @@ export class DashboardComponent implements OnInit {
 
 
 	constructor(
-			private farmsFacade: FarmsFacade
+			private farmsFacade: FarmsFacade,
+			private httpClient: HttpClient
 	) {
 		this.farmList$ = this.farmsFacade.farmList$;
 	}
@@ -55,6 +58,9 @@ export class DashboardComponent implements OnInit {
 	ngOnInit(): void {
 		this.farmsFacade.getFarms();
 		this.farmList$.subscribe(farms => this.farm = farms[0]);
+		this.httpClient.post(`${window.location.origin}/api/farms/readings`, {}).subscribe(res => {
+			console.log(res);
+		})
 	}
 
 	setFarm(farm: Farm) {
