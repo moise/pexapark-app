@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {fetchFarms} from "../../state/actions/farms.actions";
-import {Farm} from "../../models/types";
+import * as farmActions from "../../state/actions/farms.actions";
+import {Farm, Reading} from "../../models/types";
 import {Observable} from "rxjs";
 import {AppState} from "../../state/reducers/farms.reducer";
 import * as fromSelectors from "../../state/selectors/farms.selectors";
@@ -12,6 +12,7 @@ import * as fromSelectors from "../../state/selectors/farms.selectors";
 export class FarmsFacade {
 
 	farmList$: Observable<Farm[]> = this.store.select<Farm[]>( fromSelectors.allFarms );
+	farmReadings$: Observable<Reading[]> = this.store.select<Reading[]>( fromSelectors.farmReadings );
 
 	constructor(
 			private store: Store<AppState>
@@ -19,6 +20,10 @@ export class FarmsFacade {
 	}
 
 	getFarms() {
-		this.store.dispatch(fetchFarms())
+		this.store.dispatch(farmActions.fetchFarms())
+	}
+
+	getReadings(farmId: string) {
+		this.store.dispatch(farmActions.fetchFarmReadings())
 	}
 }

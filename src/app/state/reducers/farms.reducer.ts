@@ -1,9 +1,10 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import {Farm} from "../../models/types";
+import {Farm, Reading} from "../../models/types";
 import * as farmsActions from '../actions/farms.actions';
 
 export interface State {
-	farms: Farm[]
+	farms: Farm[];
+	readings?: Reading[];
 }
 
 export interface AppState {
@@ -23,7 +24,8 @@ export const initialState: State = {
 
 const farmReducer = createReducer(
 		initialState,
-		on(farmsActions.fetchFarmsSuccess, (state, {farms}) => ({...state, farms}))
+		on(farmsActions.fetchFarmsSuccess, (state, {farms}) => ({...state, farms})),
+		on(farmsActions.fetchFarmReadingSuccess, (state, {readings}) => ({...state, readings}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

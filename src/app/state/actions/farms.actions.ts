@@ -1,14 +1,27 @@
 import {createAction, props} from "@ngrx/store";
-import {Farm} from "../../models/types";
+import {Farm, Reading} from "../../models/types";
 
-const fetchAction = '[farms]/fetch'
-const fetchSuccessAction = '[farms]/fetch/success'
+const fetchFarmsAction = '[farms]/fetch'
+const fetchFarmsSuccessAction = '[farms]/fetch/success'
+
+const fetchFarmReadingAction = '[readings]/fetch'
+const fetchFarmReadingsSuccessAction = '[readings]/fetch/success'
 
 export const fetchFarms = createAction(
-		fetchAction
+		fetchFarmsAction
 );
 
 export const fetchFarmsSuccess = createAction(
-		fetchSuccessAction,
+		fetchFarmsSuccessAction,
 		props<{ farms: Farm[] }>()
 )
+
+export const fetchFarmReadings = createAction(
+		fetchFarmReadingAction
+);
+
+export const fetchFarmReadingSuccess = createAction(
+		fetchFarmReadingsSuccessAction,
+		props<{ readings: Reading[] }>()
+)
+
