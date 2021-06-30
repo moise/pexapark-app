@@ -1,22 +1,25 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {FarmsListComponent} from './dashboard/stats/filters/farms-list.component';
+import {FarmsListComponent} from './dashboard/farm-readings/readings-filters/farms-list.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatInputModule} from "@angular/material/input";
-import {ReadingsTableComponent} from './dashboard/stats/readings-table.component';
-import {DateRangeComponent} from './dashboard/stats/filters/date-range.component';
-import {FilterComponent} from './dashboard/stats/filters/filter.component';
+import {ReadingsTableComponent} from './dashboard/farm-readings/readings-table/readings-table.component';
+import {DateRangeComponent} from './dashboard/farm-readings/readings-filters/date-range.component';
+import {FiltersComponent} from './dashboard/farm-readings/readings-filters/filters.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTableModule} from "@angular/material/table";
-import { RowActionsComponent } from './dashboard/stats/row-actions.component';
+import {RowActionsComponent} from './dashboard/farm-readings/readings-table/row-actions.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {FarmReadingsComponent} from './dashboard/farm-readings/farm-readings.component';
+import {FiltersMobileComponent} from './dashboard/farm-readings/readings-filters/filters-mobile.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
@@ -25,8 +28,10 @@ import {MatButtonModule} from "@angular/material/button";
 		FarmsListComponent,
 		ReadingsTableComponent,
 		DateRangeComponent,
-		FilterComponent,
-  RowActionsComponent
+		FiltersComponent,
+		RowActionsComponent,
+		FarmReadingsComponent,
+		FiltersMobileComponent
 	],
 	exports: [
 		MatCardModule,
@@ -44,7 +49,8 @@ import {MatButtonModule} from "@angular/material/button";
 		MatTableModule,
 		MatIconModule,
 		MatMenuModule,
-		MatButtonModule
+		MatButtonModule,
+		MatSidenavModule
 	]
 })
 export class FeaturesModule {

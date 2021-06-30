@@ -4,17 +4,20 @@ import {GlobalHeaderComponent} from './components/headers/global-header.componen
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
-import {SidenavComponent} from './components/nav/sidenav.component';
+import {SideNavComponent} from './components/nav/side-nav.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {NavComponent} from './components/nav/nav.component';
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatMenuModule} from "@angular/material/menu";
+import { UserNavComponent } from './components/nav/user-nav.component';
 
 @NgModule({
 	declarations: [
 		GlobalHeaderComponent,
-		SidenavComponent,
-		NavComponent
+		SideNavComponent,
+		NavComponent,
+  UserNavComponent
 	],
 	exports: [
 		GlobalHeaderComponent,
@@ -22,7 +25,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 		MatIconModule,
 		MatSidenavModule,
 		MatListModule,
-		SidenavComponent,
+		SideNavComponent,
 	],
 	imports: [
 		CommonModule,
@@ -31,7 +34,8 @@ import {MatBadgeModule} from "@angular/material/badge";
 		MatSidenavModule,
 		MatButtonModule,
 		MatListModule,
-		MatBadgeModule
+		MatBadgeModule,
+		MatMenuModule
 	]
 })
 export class SharedModule {

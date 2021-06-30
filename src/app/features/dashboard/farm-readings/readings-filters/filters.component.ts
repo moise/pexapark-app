@@ -28,7 +28,7 @@ import {Farm, Range} from "../../../../models/types";
 		`
 	]
 })
-export class FilterComponent {
+export class FiltersComponent {
 
 	@Input() farmList: Farm[] | null = [];
 

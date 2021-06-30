@@ -14,9 +14,7 @@ import {image} from 'faker';
 									</a>
               </header>
 							<app-nav></app-nav>
-              <button mat-icon-button class="avatar" color="secondary">
-                  <img mat-card-avatar [src]="avatar" />
-              </button>
+              <app-user-nav [avatar]="avatar"></app-user-nav>
           </mat-drawer>
           <mat-drawer-content [style.margin-left]="drawerService.opened ? '60px' : 0">
               <ng-content></ng-content>
@@ -29,17 +27,10 @@ import {image} from 'faker';
 						display: flex;
 						height: calc(100%);
 				}
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-						margin: auto auto 100px;
-        }
-        .avatar img {
-            height: 40px;
-            width: auto;
-        }
+				
+				:host app-user-nav {
+            margin: auto auto 60px;
+				}
 				
         .logo {
 						height: 40px;
@@ -63,15 +54,13 @@ import {image} from 'faker';
 		`
 	]
 })
-export class SidenavComponent implements OnDestroy {
+export class SideNavComponent implements OnDestroy {
 
 	avatar: string = image.avatar();
 
 	mobileQuery: MediaQueryList;
 
 	private readonly _mobileQueryListener: () => void;
-
-	fillerNav = Array.from({length: 5}, (_, i) => `icon ${i + 1}`);
 
 	constructor(
 			changeDetectorRef: ChangeDetectorRef,

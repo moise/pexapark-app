@@ -9,21 +9,13 @@ import {FarmsFacade} from "./farms-facade.service";
       <main>
           <div class="row">
               <div class="col">
-                  <mat-card class="card">
-                      <mat-card-content>
-                          <header>
-                              <h3 class="card-title-farm-name">{{farm?.name}}</h3>
-                              <app-filter
-                                      [farmList]="farmList$ | async"
-                                      (setFarm)="setFarm($event)"
-                                      (setDateRange)="setDateRange($event)"
-                              ></app-filter>
-                          </header>
-                          <app-readings-table
-                                  [readings]="farmReadings$ | async"
-                          ></app-readings-table>
-                      </mat-card-content>
-                  </mat-card>
+                  <app-farm-readings
+													(onDateRange)="setDateRange($event)"
+													(onSelectFarm)="setFarm($event)"
+													[farm]="farm"
+													[farmList]="farmList$ | async"
+													[farmReadings]="farmReadings$ | async"
+									></app-farm-readings>
               </div>
           </div>
       </main>
@@ -33,32 +25,27 @@ import {FarmsFacade} from "./farms-facade.service";
 				:host {
 						width: 100%;
 				}
-				main {
-						padding: 2.5rem 3rem;
+				.row {
+						max-width: 100%;
 				}
-        .card {
-            padding: 0;
-        }
-
-        header {
-            display: flex;
-            margin: 0;
-            padding: 15px;
-        }
-
-        .card-title-farm-name {
-            margin: 0;
+				main {
+						padding: 1rem;
+				}
+        @media screen and (min-width: 768px) {
+            main {
+                padding: 2.5rem 3rem;
+            }
         }
 		`
 	]
 })
 export class DashboardComponent implements OnInit {
 
+	farm: Farm | undefined;
+
 	farm$: Subject<Farm> = new Subject<Farm>();
 
 	range$: Subject<Range> = new Subject<Range>();
-
-	farm: Farm | undefined;
 
 	farmList$: Observable<Farm[]> = new Observable<Farm[]>();
 
