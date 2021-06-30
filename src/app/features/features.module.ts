@@ -12,6 +12,7 @@ import {DateRangeComponent} from './dashboard/stats/filter/date-range.component'
 import {FilterComponent} from './dashboard/stats/filter/filter.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 		MatDatepickerModule,
 		MatFormFieldModule,
 		MatNativeDateModule,
+		MatTableModule
 	]
 })
 export class FeaturesModule {

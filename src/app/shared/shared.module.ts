@@ -4,21 +4,30 @@ import {GlobalHeaderComponent} from './components/headers/global-header.componen
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
+import {SidenavComponent} from './components/sidenav/sidenav.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
 	declarations: [
-		GlobalHeaderComponent
+		GlobalHeaderComponent,
+		SidenavComponent
 	],
 	exports: [
 		GlobalHeaderComponent,
 		MatToolbarModule,
-		MatIconModule
+		MatIconModule,
+		MatSidenavModule,
+		MatListModule,
+		SidenavComponent
 	],
 	imports: [
 		CommonModule,
 		MatToolbarModule,
 		MatIconModule,
-		MatButtonModule
+		MatSidenavModule,
+		MatButtonModule,
+		MatListModule,
 	]
 })
 export class SharedModule {
