@@ -22,7 +22,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 		MatIconModule,
 		MatSidenavModule,
 		MatListModule,
-		SidenavComponent
+		SidenavComponent,
 	],
 	imports: [
 		CommonModule,

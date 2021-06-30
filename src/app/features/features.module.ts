@@ -13,6 +13,10 @@ import {FilterComponent} from './dashboard/stats/filter/filter.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTableModule} from "@angular/material/table";
+import { RowActionsComponent } from './dashboard/stats/row-actions.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -21,10 +25,11 @@ import {MatTableModule} from "@angular/material/table";
 		FarmsListComponent,
 		ReadingsTableComponent,
 		DateRangeComponent,
-		FilterComponent
+		FilterComponent,
+  RowActionsComponent
 	],
 	exports: [
-		MatCardModule
+		MatCardModule,
 	],
 	imports: [
 		CommonModule,
@@ -36,7 +41,10 @@ import {MatTableModule} from "@angular/material/table";
 		MatDatepickerModule,
 		MatFormFieldModule,
 		MatNativeDateModule,
-		MatTableModule
+		MatTableModule,
+		MatIconModule,
+		MatMenuModule,
+		MatButtonModule
 	]
 })
 export class FeaturesModule {

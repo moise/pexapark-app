@@ -34,7 +34,7 @@ import {FarmsFacade} from "./farms-facade.service";
 						width: 100%;
 				}
 				main {
-						padding: 2rem;
+						padding: 2.5rem 3rem;
 				}
         .card {
             padding: 0;

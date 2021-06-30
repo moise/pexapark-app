@@ -10,7 +10,7 @@ import {DrawerService} from "../../../services/drawer.service";
               <ul class="user-menu">
                   <li>
                       <button mat-icon-button color="secondary">
-                          <mat-icon matBadgeSize="small" matBadge="5">home</mat-icon>
+                          <mat-icon matBadgeSize="small" matBadge="5">notifications</mat-icon>
                       </button>
                   </li>
               </ul>
