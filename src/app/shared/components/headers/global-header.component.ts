@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {DrawerService} from "../../../services/drawer.service";
 
 @Component({
@@ -6,7 +6,14 @@ import {DrawerService} from "../../../services/drawer.service";
 	template: `
       <mat-toolbar class="mat-elevation-z1">
           <mat-toolbar-row>
-							<h6>Dashboard</h6>
+              <h6 class="page-title">Dashboard</h6>
+              <ul class="user-menu">
+                  <li>
+                      <button mat-icon-button color="secondary">
+                          <mat-icon matBadgeSize="small" matBadge="5">home</mat-icon>
+                      </button>
+                  </li>
+              </ul>
           </mat-toolbar-row>
           <mat-toolbar-row>
               <h2 class="welcome">Welcome back, Jhon Doe</h2>
@@ -16,17 +23,32 @@ import {DrawerService} from "../../../services/drawer.service";
 	styles: [
 		`mat-toolbar {
         background-color: white;
-				padding-left: 20px;
+        padding-left: 20px;
+        padding-right: 10px;
     }
-		.drawer-button {
-				width: auto;
-				height: auto;
-		}
-		.welcome {
-				font-weight: 300;
-				font-size: 24px;
-				color: rgba(0,0,0,.7);
-		}`
+
+    .page-title {
+        text-transform: uppercase;
+        font-size: .9rem;
+        color: #717571;
+    }
+
+    .user-menu {
+        display: flex;
+        margin: 0 0 0 auto;
+        list-style: none;
+        padding: 0;
+    }
+
+    .user-menu li {
+
+    }
+
+    .welcome {
+        font-weight: 300;
+        font-size: 24px;
+        color: rgba(0, 0, 0, .7);
+    }`
 	]
 })
 export class GlobalHeaderComponent {

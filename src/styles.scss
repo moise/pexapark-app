@@ -16,9 +16,18 @@
 @import "../node_modules/bootstrap/scss/grid";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F3F6FF }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #F3F6FF;
+  color: var(--bs-gray-dark)
+}
 
 .mat-autocomplete-panel .mat-option {
   font-size: .8rem;
   height: 35px;
+}
+
+.mat-list-item .mat-list-item-content {
+  padding: 0 !important;
 }

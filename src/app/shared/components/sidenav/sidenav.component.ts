@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {DrawerService} from "../../../services/drawer.service";
 
@@ -8,12 +8,13 @@ import {DrawerService} from "../../../services/drawer.service";
       <mat-drawer-container [hasBackdrop]="false">
           <mat-drawer #drawer mode="side" opened class="mat-elevation-z0">
               <header>
-                  <button [disableRipple]="true" class="drawer-button" mat-icon-button (click)="setDrawer()">
-                      <mat-icon>menu</mat-icon>
-                  </button>
+                  <a href="/">
+                      <img class="logo" src="assets/logo2-purple.png" />
+									</a>
               </header>
+							<app-nav></app-nav>
           </mat-drawer>
-          <mat-drawer-content [style.margin-left]="drawerService.opened ? '50px' : 0">
+          <mat-drawer-content [style.margin-left]="drawerService.opened ? '60px' : 0">
               <ng-content></ng-content>
           </mat-drawer-content>
       </mat-drawer-container>
@@ -24,14 +25,24 @@ import {DrawerService} from "../../../services/drawer.service";
 						display: flex;
 						height: calc(100%);
 				}
+				.logo {
+						height: 40px;
+						width: 40px;
+				}
 				mat-drawer-container {
 						background-color: transparent;
 						width: 100%;
 				}
 				mat-drawer {
-						width: 50px;
+						width: 60px;
 						box-shadow: none !important;
 						border-right: 1px solid rgba(0, 0, 0, .1);
+				}
+        mat-drawer header {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						padding-top: 0.5rem;
 				}
 		`
 	]

@@ -7,11 +7,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import {NavComponent} from './components/sidenav/nav.component';
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
 	declarations: [
 		GlobalHeaderComponent,
-		SidenavComponent
+		SidenavComponent,
+		NavComponent
 	],
 	exports: [
 		GlobalHeaderComponent,
@@ -28,6 +31,7 @@ import {MatListModule} from "@angular/material/list";
 		MatSidenavModule,
 		MatButtonModule,
 		MatListModule,
+		MatBadgeModule
 	]
 })
 export class SharedModule {
