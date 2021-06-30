@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {DrawerService} from "../../../services/drawer.service";
+import {image} from 'faker';
 
 @Component({
 	selector: 'app-sidenav',
@@ -9,10 +10,13 @@ import {DrawerService} from "../../../services/drawer.service";
           <mat-drawer #drawer mode="side" opened class="mat-elevation-z0">
               <header>
                   <a href="/">
-                      <img class="logo" src="assets/logo2-purple.png" />
+                      <img class="logo" src="assets/logo3.svg" />
 									</a>
               </header>
 							<app-nav></app-nav>
+              <button mat-icon-button class="avatar" color="secondary">
+                  <img mat-card-avatar [src]="avatar" />
+              </button>
           </mat-drawer>
           <mat-drawer-content [style.margin-left]="drawerService.opened ? '60px' : 0">
               <ng-content></ng-content>
@@ -25,7 +29,19 @@ import {DrawerService} from "../../../services/drawer.service";
 						display: flex;
 						height: calc(100%);
 				}
-				.logo {
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+						margin: auto auto 100px;
+        }
+        .avatar img {
+            height: 40px;
+            width: auto;
+        }
+				
+        .logo {
 						height: 40px;
 						width: 40px;
 				}
@@ -48,6 +64,8 @@ import {DrawerService} from "../../../services/drawer.service";
 	]
 })
 export class SidenavComponent implements OnDestroy {
+
+	avatar: string = image.avatar();
 
 	mobileQuery: MediaQueryList;
 

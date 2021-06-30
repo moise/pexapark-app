@@ -5,10 +5,11 @@ import {Farm, Range} from "../../../../models/types";
 	selector: 'app-filter',
 	template: `
       <app-farms-list
-              class="farm-list-wrapper" [farmList]="farmList"
+              class="farm-list-wrapper filter-item" [farmList]="farmList"
               (setFarm)="setFarm.emit($event)"
       ></app-farms-list>
       <app-date-range
+							class="filter-item"
 							(onDateChange)="setDateRange.emit($event)"
       ></app-date-range>
 	`,
@@ -18,6 +19,12 @@ import {Farm, Range} from "../../../../models/types";
             display: flex;
             margin-left: auto;
         }
+				.filter-item {
+						display: inline-flex;
+				}
+				.filter-item + .filter-item {
+						margin-left: 1rem;
+				}
 		`
 	]
 })

@@ -15,6 +15,7 @@
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
 
+
 html, body { height: 100%; }
 body {
   margin: 0;
@@ -30,4 +31,9 @@ body {
 
 .mat-list-item .mat-list-item-content {
   padding: 0 !important;
+}
+
+.mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
 }

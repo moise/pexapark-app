@@ -10,7 +10,7 @@ import {Store} from "@ngrx/store";
 	template: `
       <form class="farm-picker-form">
           <mat-form-field class="form-field" appearance="fill">
-              <mat-label>Select another farm</mat-label>
+              <mat-label>Search farm</mat-label>
               <input
                       matInput
                       type="text"

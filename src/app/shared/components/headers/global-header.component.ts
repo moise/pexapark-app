@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DrawerService} from "../../../services/drawer.service";
 
+
 @Component({
 	selector: 'app-global-header',
 	template: `
@@ -26,7 +27,7 @@ import {DrawerService} from "../../../services/drawer.service";
         padding-left: 20px;
         padding-right: 10px;
     }
-
+		
     .page-title {
         text-transform: uppercase;
         font-size: .9rem;
