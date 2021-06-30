@@ -6,12 +6,14 @@ import {DrawerService} from "../../../services/drawer.service";
 	selector: 'app-sidenav',
 	template: `
       <mat-drawer-container [hasBackdrop]="false">
-          <mat-drawer #drawer [opened]="drawerService.opened" class="mat-elevation-z0">
+          <mat-drawer #drawer mode="side" opened class="mat-elevation-z0">
               <header>
-									
+                  <button [disableRipple]="true" class="drawer-button" mat-icon-button (click)="setDrawer()">
+                      <mat-icon>menu</mat-icon>
+                  </button>
               </header>
           </mat-drawer>
-          <mat-drawer-content [style.margin-left]="drawerService.opened ? '40px' : 0">
+          <mat-drawer-content [style.margin-left]="drawerService.opened ? '50px' : 0">
               <ng-content></ng-content>
           </mat-drawer-content>
       </mat-drawer-container>
@@ -20,21 +22,17 @@ import {DrawerService} from "../../../services/drawer.service";
 		`
 				:host {
 						display: flex;
-						height: calc(100% - 64px);
+						height: calc(100%);
 				}
 				mat-drawer-container {
 						background-color: transparent;
 						width: 100%;
 				}
 				mat-drawer {
-						width: 40px;
+						width: 50px;
+						box-shadow: none !important;
+						border-right: 1px solid rgba(0, 0, 0, .1);
 				}
-        mat-drawer-content {
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
 		`
 	]
 })
@@ -58,6 +56,10 @@ export class SidenavComponent implements OnDestroy {
 
 	ngOnDestroy(): void {
 		// this.mobileQuery.removeListener(this._mobileQueryListener);
+	}
+
+	setDrawer(): void {
+		this.drawerService.opened$.next(!this.drawerService.opened)
 	}
 
 }
