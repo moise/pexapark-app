@@ -7,14 +7,14 @@ import {image} from 'faker';
 	selector: 'app-sidenav',
 	template: `
       <mat-drawer-container [hasBackdrop]="false">
-          <mat-drawer #drawer mode="side" opened class="mat-elevation-z0">
+          <mat-drawer data-cy="side-nav-drawer" #drawer mode="side" opened class="mat-elevation-z0">
               <header>
                   <a href="/">
                       <img class="logo" src="assets/logo3.svg" />
 									</a>
               </header>
-							<app-nav></app-nav>
-              <app-user-nav [avatar]="avatar"></app-user-nav>
+							<app-nav data-cy="side-app-nav"></app-nav>
+              <app-user-nav data-cy="side-user-nav" [avatar]="avatar"></app-user-nav>
           </mat-drawer>
           <mat-drawer-content [style.margin-left]="drawerService.opened ? '60px' : 0">
               <ng-content></ng-content>
