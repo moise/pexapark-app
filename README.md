@@ -1,27 +1,51 @@
-# App
+# Pexapark
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
-## Development server
+## Setup
+Run `npm install` before doing whatever.
+
+## Run APP
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Data Mock
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Mocks were builded through an Angular interceptor under the `mock`folder. As an helper, fakerJS library was installed to generate better and random data.
 
-## Build
+## Folder structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  + `features` feature module contains every core component like DashboardComponent and Charts.
+  + `mdoels` typescript models.
+  + `services` app services
+  + `shared` shared module contains ervery common compoments like SideNav and Toolbar
+  + `state` store module
+        - `effects` every crud action is done here in domain separated files.
+        - `actions` store actions.
+        - `reducers` store reducers.
+        - `selectors` app state selectors
 
-## Running unit tests
+## UI
+Angular Material kit was used for a faster prototyping.
+Logo was randomly selected.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Dashboard
+A chart and a table are showing needed data.
+The chart display **ONLY** capacity factor, for more data information, a table was provided in the second tab.
+
+## Filters
+An `autocomplete` component was builded to allow users to select a different farm.
+Any time a farm is changed, a new set of data is loaded.
+A `range date picker`component allow to select a set of dates as data filter.
+
+```
+### Warning
+Please, be aware that, the range picker filter, does not work as espected due to mocked data. Every time a data is changed, a list of 21 days is returned.
+```
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Cypress was used to build APP tests. Run `npm run test` to execute the end-to-end tests via Cypress. To use this command, you need to first run the `ng serve` command.
+Alternatively run `npm run test:cy` to execute end-to-end test through terminal (instead of client application).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For more informations about [`Cypress`](https://github.com/cypress-io/cypress)
