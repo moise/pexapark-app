@@ -4,11 +4,11 @@ import {Farm, Range, Reading} from "../../../../models/types";
 @Component({
 	selector: 'app-filters-mobile',
 	template: `
-      <button mat-icon-button (click)="drawer.toggle()">
+      <button data-cy="filters-toggle-button" mat-icon-button (click)="drawer.toggle()">
           <mat-icon>filter_list</mat-icon>
       </button>
-      <mat-sidenav #drawer [fixedInViewport]="true" position="end" class="example-sidenav" mode="side">
-          <button mat-icon-button (click)="drawer.toggle()">
+      <mat-sidenav data-cy="filters-drawer" #drawer [fixedInViewport]="true" position="end" class="example-sidenav" mode="side">
+          <button  data-cy="filters-close-button" mat-icon-button (click)="drawer.toggle()">
               <mat-icon>close</mat-icon>
           </button>
           <app-filter
