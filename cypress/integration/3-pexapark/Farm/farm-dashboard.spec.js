@@ -23,8 +23,7 @@ context('test farm dashboard component', () => {
 
 
                 it('header with filters should exist', function () {
-                    cy.get('@stats').find('header')
-                        .should("exist")
+                    cy.get('@stats')
                         .find('[data-cy="stats-filters"]')
                         .should("exist")
                 });
@@ -47,8 +46,7 @@ context('test farm dashboard component', () => {
                         cy.get('.mat-autocomplete-panel').find('mat-option').last().find('.mat-option-text').click()
                             .then($option => {
                                 const farmTitle = $option.text();
-                                cy.get('@stats').find('.card-title-farm-name')
-                                    .should('contain.text', farmTitle)
+                                cy.get('.card-title-farm-name').should('contain.text', farmTitle)
                             })
                     })
                 });
@@ -96,8 +94,7 @@ context('test farm dashboard component', () => {
                                 .then($option => {
                                     const farmTitle = $option.text();
                                     cy.get('[data-cy="filters-close-button"]').click().then(() => {
-                                        cy.get('@stats').find('.card-title-farm-name')
-                                            .should('contain.text', farmTitle)
+                                        cy.get('.card-title-farm-name').should('contain.text', farmTitle);
                                     });
                                 })
                         })
