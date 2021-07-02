@@ -8,7 +8,7 @@ import {FarmsFacade} from "./farms-facade.service";
 	template: `
       <main>
           <div class="row">
-              <div class="col">
+              <div class="col" data-cy="farm-dashboard">
                   <app-farm-readings
 													(onDateRange)="setDateRange($event)"
 													(onSelectFarm)="setFarm($event)"
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	setFarm(farm: Farm) {
-		this.farm$.next(farm);
+		this.farm$.next({...farm, name: farm.name.trim()});
 	}
 
 	setDateRange(range: Range) {

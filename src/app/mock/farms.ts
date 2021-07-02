@@ -7,7 +7,7 @@ const max = 15;
 const farms: Farm[] = [];
 
 Array.from(Array(min ? Math.floor(Math.random() * (max - min) + min) : max), (x, i) => i).map((value) => {
-    const name = faker.company.companyName();
+    const name = faker.company.companyName().trim();
     farms.push({
         name,
         id: faker.datatype.uuid(),

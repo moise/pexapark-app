@@ -5,18 +5,18 @@ import {DrawerService} from "../../../services/drawer.service";
 @Component({
 	selector: 'app-global-header',
 	template: `
-      <mat-toolbar class="mat-elevation-z1">
-          <mat-toolbar-row>
+      <mat-toolbar class="mat-elevation-z1" data-cy="global-header">
+          <mat-toolbar-row data-cy="first-row">
               <h6 class="page-title">Dashboard</h6>
               <ul class="user-menu">
                   <li>
-                      <button mat-icon-button color="secondary">
+                      <button data-cy="nitifications" mat-icon-button color="secondary">
                           <mat-icon matBadgeSize="small" matBadge="5">notifications</mat-icon>
                       </button>
                   </li>
               </ul>
           </mat-toolbar-row>
-          <mat-toolbar-row>
+          <mat-toolbar-row data-cy="second-row">
               <h2 class="welcome">Welcome back, Jhon Doe</h2>
           </mat-toolbar-row>
       </mat-toolbar>

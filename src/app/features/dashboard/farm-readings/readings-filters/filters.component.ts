@@ -5,10 +5,12 @@ import {Farm, Range} from "../../../../models/types";
 	selector: 'app-filter',
 	template: `
       <app-farms-list
+							data-cy="farm-select"
               class="farm-list-wrapper filter-item" [farmList]="farmList"
               (setFarm)="setFarm.emit($event)"
       ></app-farms-list>
       <app-date-range
+              data-cy="farm-data-range"
 							class="filter-item"
 							(onDateChange)="setDateRange.emit($event)"
       ></app-date-range>

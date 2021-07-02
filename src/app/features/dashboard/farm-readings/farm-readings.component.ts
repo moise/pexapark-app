@@ -6,17 +6,19 @@ import {MediaMatcher} from "@angular/cdk/layout";
 @Component({
 	selector: 'app-farm-readings',
 	template: `
-      <mat-card class="card">
-          <mat-card-content>
+      <mat-card class="card" data-cy="farm-card">
+          <mat-card-content data-cy="stats">
               <header>
                   <h3 class="card-title-farm-name">{{farm?.name}}</h3>
                   <app-filter
+													data-cy="stats-filters"
 													*ngIf="mobileQuery.matches"
                           [farmList]="farmList"
                           (setFarm)="onSelectFarm.emit($event)"
                           (setDateRange)="onDateRange.emit($event)"
                   ></app-filter>
 									<app-filters-mobile
+                          data-cy="stats-filters-mobile"
                           *ngIf="!mobileQuery.matches"
                           [farmList]="farmList"
                           (onSelectFarm)="onSelectFarm.emit($event)"
@@ -24,6 +26,7 @@ import {MediaMatcher} from "@angular/cdk/layout";
 									></app-filters-mobile>
               </header>
               <app-readings-table
+                      data-cy="stats-table"
                       [readings]="farmReadings"
               ></app-readings-table>
           </mat-card-content>

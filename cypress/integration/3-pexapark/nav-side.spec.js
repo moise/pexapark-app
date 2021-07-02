@@ -1,5 +1,6 @@
 describe('test navigation sidebar', () => {
     before(() => {
+        Cypress.config('viewportWidth', 1200)
         cy.visit('http://localhost:4200/');
     })
 

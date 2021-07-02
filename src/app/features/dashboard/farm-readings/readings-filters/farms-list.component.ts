@@ -20,9 +20,7 @@ import {Store} from "@ngrx/store";
               >
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                   <mat-option (click)="setFarm.emit(farm)" *ngFor="let farm of filteredFarms | async"
-                              [value]="farm.name">
-                      {{farm.name}}
-                  </mat-option>
+                              [value]="farm.name">{{farm.name}}</mat-option>
               </mat-autocomplete>
           </mat-form-field>
       </form>
