@@ -28,7 +28,7 @@ const selectedForLost = (count: number ) => Math.floor(Math.random() * count) + 
 const farmReadings: (hasRange?: boolean) => Reading[] =	(hasRange = false) => (
 		getDates(!hasRange ? startDateOneWeek : startDate, endDate).reduce((items: Reading[], date, index) => {
 			const producedEnergy = faker.datatype.number({min: 50, max: 240});
-			const factor = (Number((producedEnergy / 240).toFixed(2))) * 100;
+			const factor = Math.floor((producedEnergy / 240) * 100 );
 			const readings = index + 1 === selectedForLost(hasRange ? 14 : 7) ? (24 - (Math.floor(Math.random() * 7) + 1)) : 24;
 
 			items.push({

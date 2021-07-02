@@ -37,3 +37,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.mat-tab-body-wrapper, .mat-tab-body.mat-tab-body-active {
+  position: static !important;
+}

@@ -33,8 +33,11 @@ import {Farm, Range, Reading} from "../../../../models/types";
 				width: 100%;
     }
 		:host ::ng-deep app-filter .filter-item {
-				margin: 0 !important;
-    }`
+				margin: 0 0 1rem !important;
+    }
+    .mat-drawer.mat-drawer-side {
+				z-index: 999;
+		}`
 	]
 })
 export class FiltersMobileComponent implements OnInit {

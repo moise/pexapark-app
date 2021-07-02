@@ -21,6 +21,19 @@ import {Farm, Range} from "../../../../models/types";
             display: flex;
             margin-left: auto;
         }
+				:host ::ng-deep .mat-form-field-flex {
+						padding-top: 3px !important;
+						padding-bottom: 3px !important;
+				}
+        :host ::ng-deep .mat-form-field-infix,
+				:host ::ng-deep .mat-form-field-wrapper,
+        :host ::ng-deep .mat-form-field-appearance-fill{
+						padding-bottom: 0;
+						font-size: .8rem;
+				}
+				:host ::ng-deep .mat-form-field-underline {
+						display: none;
+				}
 				.filter-item {
 						display: inline-flex;
 				}

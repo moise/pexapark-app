@@ -19,7 +19,7 @@ import {Component, Input, OnInit} from '@angular/core';
         height: 40px;
         border-radius: 50%;
         overflow: hidden;
-        margin: auto auto 60px;
+        margin: auto auto 1%;
     }
 
     .avatar img {
@@ -28,14 +28,10 @@ import {Component, Input, OnInit} from '@angular/core';
     }`
 	]
 })
-export class UserNavComponent implements OnInit {
+export class UserNavComponent {
 
 	@Input() avatar: string = '';
 
 	constructor() {
 	}
-
-	ngOnInit(): void {
-	}
-
 }

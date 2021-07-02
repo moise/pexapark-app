@@ -20,6 +20,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {FarmReadingsComponent} from './dashboard/farm-readings/farm-readings.component';
 import {FiltersMobileComponent} from './dashboard/farm-readings/readings-filters/filters-mobile.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {ReadingsChartComponent} from './dashboard/farm-readings/readings-chart/readings-chart.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import {MatTabsModule} from "@angular/material/tabs";
+import { ReadingsFiltersComponent } from './dashboard/farm-readings/readings-filters/readings-filters.component';
 
 
 @NgModule({
@@ -31,7 +35,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 		FiltersComponent,
 		RowActionsComponent,
 		FarmReadingsComponent,
-		FiltersMobileComponent
+		FiltersMobileComponent,
+		ReadingsChartComponent,
+  ReadingsFiltersComponent
 	],
 	exports: [
 		MatCardModule,
@@ -50,7 +56,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 		MatIconModule,
 		MatMenuModule,
 		MatButtonModule,
-		MatSidenavModule
+		MatSidenavModule,
+		NgApexchartsModule,
+		MatTabsModule
 	]
 })
 export class FeaturesModule {

@@ -15,7 +15,14 @@ import {Range} from "../../../../models/types";
           <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
 	`,
-	styles: []
+	styles: [
+			`
+			mat-datepicker-toggle ::ng-deep button.mat-icon-button {
+          height: 1.5rem !important;
+          width: 1.5rem !important;
+      }
+			`
+	]
 })
 export class DateRangeComponent implements OnInit {
 
