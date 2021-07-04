@@ -32,6 +32,7 @@ Logo was randomly selected.
 ## Dashboard
 A chart and a table are showing needed data.
 The chart display **ONLY** capacity factor, for more data information, a table was provided in the second tab.
+*(**Sometimes, as a random value, readings lost are shown the the `Reading` column. If no lost are visibile, try to refresh the page.**)*
 
 ## Filters
 An `autocomplete` component was builded to allow users to select a different farm.
